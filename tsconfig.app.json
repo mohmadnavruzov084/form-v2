@@ -32,5 +32,5 @@
       "@steps/*": ["./src/components/Registration-form/steps/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "vite-env.d.ts"]
 }

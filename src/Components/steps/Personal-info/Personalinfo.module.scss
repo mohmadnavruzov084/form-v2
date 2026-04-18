@@ -1,0 +1,59 @@
+@use "../../../scssVariable/variables" as *;
+.formRegistration {
+  border: 1px solid $colors-neutrals-neutral-300;
+  border-radius: 32px;
+  padding: 48px;
+  width: 381px;
+  height: 501px;
+  box-shadow: 0 1px 8px 0 rgba(25, 33, 61, 0.06);
+  background: $colors-neutrals-white;
+  position: relative;
+  top: 140px;
+  &_title {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.15;
+    color: $colors-neutrals-neutral-800;
+    margin-bottom: 32px;
+  }
+}
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  &_item {
+    display: flex;
+  }
+  &_box {
+    padding: 12px;
+  }
+  input {
+    border: 1px solid $colors-neutrals-neutral-400;
+    border-radius: 14px;
+    padding: 8px 16px;
+    width: 134px;
+    height: 48px;
+    min-height: 48px;
+    margin-top: 12px;
+  }
+  label {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.15;
+    color: #170f49;
+  }
+  .redStar {
+    color: $secondary-red;
+  }
+  .longinput {
+    border: 1px solid $colors-neutrals-neutral-400;
+    border-radius: 14px;
+    padding: 8px 16px;
+    width: 285px;
+    height: 48px;
+    min-height: 48px;
+    box-shadow: 0 1px 1px 0 rgba(25, 33, 61, 0.04);
+    background: #fff;
+  }
+}

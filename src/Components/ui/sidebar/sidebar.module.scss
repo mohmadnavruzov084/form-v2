@@ -29,7 +29,7 @@
     display: flex;
     gap: 16px;
   }
-  &-number {
+  &_number {
     border: 0.5px solid $colors-primary-hue-purple-300;
     border-radius: 8px;
     padding: 11px 13px;
@@ -57,17 +57,17 @@
       color: $colors-neutrals-white;
     }
   }
-  &-text {
+  &_text {
     padding: 2px 0px 0px;
   }
-  &-title {
+  &_title {
     font-weight: 600;
     font-size: 16px;
     line-height: 1.15;
     color: $colors-neutrals-neutral-800;
     padding-bottom: 5px;
   }
-  &-description {
+  &_description {
     font-weight: 400;
     font-size: 12px;
     line-height: 1.5;
@@ -94,17 +94,17 @@
   }
 
   // Серая (0%)
-  &.line-0::after {
+  &.line_0::after {
     background-color: #d2ceff;
   }
 
   // Наполовину фиолетовая (50%)
-  &.line-50::after {
+  &.line_50::after {
     background: linear-gradient(180deg, #4a3aff 0%, #d2ceff 100%);
   }
 
   // Полностью фиолетовая (100%)
-  &.line-100::after {
+  &.line_100::after {
     background: linear-gradient(180deg, #8c82ff 0%, #4a3aff 100%);
   }
 }

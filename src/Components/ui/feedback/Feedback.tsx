@@ -4,7 +4,7 @@ export const Feedback = () => {
   return (
     <>
       <div className={styles.feedback}>
-        <div className={styles.feedback - container}>
+        <div className={styles.feedback_container}>
           <div className={styles.feedback_text}>
             <h3>Need a help?</h3>
             <p>chat with live support</p>
