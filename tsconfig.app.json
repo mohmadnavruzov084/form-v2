@@ -28,8 +28,8 @@
       "@/*": ["./src/*"],
       "@ui/*": ["./src/ui/*"],
       "@modules/*": ["./src/modules/*"],
-      "@components/*": ["./src/components/*"],
-      "@steps/*": ["./src/components/Registration-form/steps/*"]
+      "@components/*": ["src/components/*"],
+      "@steps/*": ["src/components/Registration-form/steps/*"]
     }
   },
   "include": ["src", "vite-env.d.ts"]

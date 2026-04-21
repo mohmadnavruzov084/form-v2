@@ -1,4 +1,4 @@
-import { Button } from "@/Components/ui/button/button";
+import { Button } from "@/components/ui/button/button";
 import styles from "./Personalinfo.module.scss";
 export const Personalinfo = () => {
   return (

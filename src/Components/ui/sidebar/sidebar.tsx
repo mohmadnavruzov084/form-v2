@@ -14,7 +14,7 @@ export const Sidebar = () => {
           <div className={styles.steps_item}>
             <div className={`${styles.steps_number} ${styles.steps_number_active}`}>1</div>
             <div className={styles.steps_text}>
-              <h4 className={styles.steps_title}>Personal information</h4>
+              <p className={styles.steps_title}>Personal information</p>
               <p className={styles.steps_description}>
                 Tell us who you are to get started.
               </p>
@@ -25,7 +25,7 @@ export const Sidebar = () => {
           <div className={styles.steps_item}>
             <div className={styles.steps_number}>2</div>
             <div className={styles.steps_text}>
-              <h4 className={styles.steps_title}>Personal information</h4>
+              <p className={styles.steps_title}>Personal information</p>
               <p className={styles.steps_description}>
                 Choose the product plan that fits your needs.
               </p>
@@ -37,7 +37,7 @@ export const Sidebar = () => {
           <div className={styles.steps_item}>
             <div className={styles.steps_number}>3</div>
             <div className={styles.steps_text}>
-              <h4 className={styles.steps_title}>Identity verification</h4>
+              <p className={styles.steps_title}>Identity verification</p>
               <p className={styles.steps_description}>
                 Verify your identity for security purposes.
               </p>
@@ -49,7 +49,7 @@ export const Sidebar = () => {
           <div className={styles.steps_item}>
             <div className={styles.steps_number}>4</div>
             <div className={styles.steps_text}>
-              <h4 className={styles.steps_title}>Activate account</h4>
+              <p className={styles.steps_title}>Activate account</p>
               <p className={styles.steps_description}>
                 Final step! Let’s activate your account.
               </p>
