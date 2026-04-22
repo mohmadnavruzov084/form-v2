@@ -20,4 +20,9 @@
   line-height: 1.15;
   text-align: center;
   color: $colors-neutrals-white;
+  cursor: pointer;
+  
+}
+.button:Hover{
+  border: 1px  rgb(125, 67, 219);
 }
