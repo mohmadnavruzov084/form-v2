@@ -1,4 +1,4 @@
-import { MultiFormPage } from "../Components/MultiFormPage/MultiFormPage";
+import { MultiFormPage } from "../components/multiFormPage/multiFormPage";
 
 export const FormPage = () => {
   return <MultiFormPage />;

@@ -1,8 +1,5 @@
 @use "../../../scssVariable/variables" as *;
 .button {
-  position: relative;
-  left: 70px;
-  top: 10px;
   border: 0.5px solid $colors-primary-hue-purple-300;
   border-radius: 12px;
   padding: 16px 18px;
@@ -19,5 +16,9 @@
   font-size: 16px;
   line-height: 1.15;
   text-align: center;
+  cursor: pointer;
   color: $colors-neutrals-white;
+  &:hover {
+    border-color: black;
+  }
 }

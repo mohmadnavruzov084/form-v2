@@ -1,4 +1,5 @@
 @use "../../../scssVariable/variables" as *;
+
 .formRegistration {
   border: 1px solid $colors-neutrals-neutral-300;
   border-radius: 32px;
@@ -9,25 +10,37 @@
   background: $colors-neutrals-white;
   position: relative;
   top: 140px;
+
   &_title {
     font-weight: 600;
     font-size: 24px;
     line-height: 1.15;
     color: $colors-neutrals-neutral-800;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
   }
 }
+
 .form {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%; // 👈 добавить
+
   &_item {
     display: flex;
+    gap: 16px;
+    width: 100%; // 👈 добавить
   }
+
   &_box {
     padding: 12px;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    width: 100%; // 👈 добавить
   }
+
   input {
     border: 1px solid $colors-neutrals-neutral-400;
     border-radius: 14px;
@@ -37,15 +50,18 @@
     min-height: 48px;
     margin-top: 12px;
   }
+
   label {
     font-weight: 500;
     font-size: 14px;
     line-height: 1.15;
     color: #170f49;
   }
+
   .redStar {
     color: $secondary-red;
   }
+
   .longinput {
     border: 1px solid $colors-neutrals-neutral-400;
     border-radius: 14px;
@@ -55,5 +71,16 @@
     min-height: 48px;
     box-shadow: 0 1px 1px 0 rgba(25, 33, 61, 0.04);
     background: #fff;
+  }
+
+  // 👇 ПЕРЕНЕСТИ buttonWrapper ВНУТРЬ .form
+  &_buttonWrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 4px;
+    margin-bottom: 48px;
+    margin-right: 0; // убираем правый отступ, т.к. flex прижмет вправо
+    margin-left: 0;
   }
 }

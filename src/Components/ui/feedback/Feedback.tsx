@@ -1,5 +1,5 @@
 import { Feedbackicon } from "../icons/feedback-icon";
-import styles from "./Feedback.module.scss";
+import styles from "./feedback.module.scss";
 export const Feedback = () => {
   return (
     <>
