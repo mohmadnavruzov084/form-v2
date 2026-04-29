@@ -13,28 +13,4 @@ export default defineConfig({
       "@steps": path.resolve(__dirname, "./src/components/steps"),
     },
   },
-  // 👇 ДОБАВЬ ЭТУ СЕКЦИЮ
-  css: {
-    preprocessorOptions: {
-      scss: {
-        // Добавляет глобальные переменные (опционально)
-        additionalData: `@use "@/scssVariable/variables" as *;`,
-        // Включает sourcemaps для отладки
-        sourceMap: true,
-      },
-    },
-    // Включает hot reload для CSS
-    devSourcemap: true,
-  },
-  // 👇 ДЛЯ БОЛЕЕ СТАБИЛЬНОГО HMR
-  server: {
-    watch: {
-      // Используй polling если файлы на сетевом диске
-      usePolling: false, // если true - потребляет больше CPU
-      interval: 1000,
-    },
-    hmr: {
-      overlay: true, // показывать ошибки поверх приложения
-    },
-  },
 });

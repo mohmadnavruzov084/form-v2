@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button/button";
-import styles from "./Personalinfo.module.scss";
+import styles from "./personalinfo.module.scss";
 import { InputController } from "@/module/inputController";
 import { SubmitHandler, useFormContext } from "react-hook-form";
 

@@ -1,4 +1,4 @@
-import { Feedbackicon } from "../icons/feedback-icon";
+import { Feedbackicon } from "../icons/feedbackIcon";
 import styles from "./feedback.module.scss";
 export const Feedback = () => {
   return (
