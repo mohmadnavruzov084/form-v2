@@ -19,6 +19,6 @@
   cursor: pointer;
   color: $colors-neutrals-white;
   &:hover {
-    border-color: black;
+    border: $colors-primary-hue-purple-300;
   }
 }

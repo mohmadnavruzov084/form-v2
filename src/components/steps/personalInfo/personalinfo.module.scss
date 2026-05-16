@@ -25,12 +25,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%; // 👈 добавить
+  width: 100%; 
 
   &_item {
     display: flex;
     gap: 16px;
-    width: 100%; // 👈 добавить
+    width: 100%; 
   }
 
   &_box {
@@ -38,7 +38,7 @@
     display: flex;
     flex-direction: column;
     min-width: 0;
-    width: 100%; // 👈 добавить
+    width: 100%;
   }
 
   input {
@@ -73,14 +73,22 @@
     background: #fff;
   }
 
-  // 👇 ПЕРЕНЕСТИ buttonWrapper ВНУТРЬ .form
+
   &_buttonWrapper {
     display: flex;
     justify-content: flex-end;
     width: 100%;
     margin-top: 4px;
     margin-bottom: 48px;
-    margin-right: 0; // убираем правый отступ, т.к. flex прижмет вправо
+    margin-right: 0; 
     margin-left: 0;
   }
 }
+
+.account_active_img {
+  font-size: 100px;
+  text-align: center;
+  margin-top: 50px;
+  color: $colors-primary-hue-purple-700;
+}
+

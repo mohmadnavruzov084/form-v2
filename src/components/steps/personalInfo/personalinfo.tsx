@@ -2,12 +2,14 @@ import { Button } from "@/components/ui/button/button";
 import styles from "./personalinfo.module.scss";
 import { InputController } from "@/module/inputController";
 import { SubmitHandler, useFormContext } from "react-hook-form";
+import { useUserDataStore } from "@/store/userStore";
 
-export const Personalinfo = () => {
+export const Personalinfo = ({ onNext }: { onNext: () => void }) => {
   const { handleSubmit } = useFormContext();
-
+  const { setUser } = useUserDataStore();
   const onSubmit: SubmitHandler<any> = (data) => {
-    console.log(data);
+    setUser(data);
+    onNext();
   };
   return (
     <>
@@ -55,14 +57,14 @@ export const Personalinfo = () => {
                 Address <span className={styles.redStar}>*</span>
               </label>
               <InputController
-                name="Address"
+                name="address"
                 placeholder="Exp. San Francisco, CA"
                 className={styles.longinput}
               />
             </div>
           </div>
           <div className={styles.form_buttonWrapper}>
-            <Button />
+            <Button onClick={onNext}> Continue</Button>
           </div>
         </form>
       </div>

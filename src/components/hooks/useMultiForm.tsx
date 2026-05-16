@@ -50,7 +50,9 @@ const defaultValues = {
 };
 
 export const useMultiForm = () => {
+ 
   const form = useForm({
+    mode: "onChange",
     resolver: zodResolver(schema),
     defaultValues,
   });
