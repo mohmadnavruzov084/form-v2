@@ -1,26 +1,24 @@
-@use "../../../scssVariable/variables" as *;
 .feedback {
-    margin-top: 120px;
+  margin-top: 120px;
   &_container {
     display: flex;
     gap: 50px;
     justify-content: space-around;
-    ;
   }
-  &_text {
-    h3 {
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 1.15;
-      color: $colors-neutrals-neutral-800;
-    }
-    p {
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 1.5;
-      color: $colors-neutrals-neutral-600;
-    }
+
+  &_title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.15;
+    color: $colors-neutrals-neutral-800;
   }
+  &_descripton {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: $colors-neutrals-neutral-600;
+  }
+
   &_icon {
     border: 0.5px solid #f1f2f9;
     border-radius: 8px;

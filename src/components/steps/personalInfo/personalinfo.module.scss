@@ -1,5 +1,3 @@
-@use "../../../scssVariable/variables" as *;
-
 .formRegistration {
   border: 1px solid $colors-neutrals-neutral-300;
   border-radius: 32px;
@@ -17,6 +15,7 @@
     line-height: 1.15;
     color: $colors-neutrals-neutral-800;
     margin-bottom: 16px;
+    text-align: center;
   }
 }
 
@@ -25,12 +24,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%; 
+  width: 100%;
 
   &_item {
     display: flex;
     gap: 16px;
-    width: 100%; 
+    width: 100%;
   }
 
   &_box {
@@ -73,14 +72,13 @@
     background: #fff;
   }
 
-
   &_buttonWrapper {
     display: flex;
     justify-content: flex-end;
     width: 100%;
     margin-top: 4px;
     margin-bottom: 48px;
-    margin-right: 0; 
+    margin-right: 0;
     margin-left: 0;
   }
 }
@@ -91,4 +89,3 @@
   margin-top: 50px;
   color: $colors-primary-hue-purple-700;
 }
-

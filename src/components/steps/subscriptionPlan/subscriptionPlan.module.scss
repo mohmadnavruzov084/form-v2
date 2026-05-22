@@ -1,4 +1,3 @@
-@use "../../../scssVariable/variables" as *;
 .plans {
   &_wrapper {
     border: 1px solid $colors-neutrals-neutral-300;
@@ -78,4 +77,13 @@
 
 .selected {
   border: 1px solid $colors-primary-hue-purple-700;
+}
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+  padding: 8px;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-radius: 4px;
 }

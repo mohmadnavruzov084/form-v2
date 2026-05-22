@@ -13,4 +13,11 @@ export default defineConfig({
       "@steps": path.resolve(__dirname, "./src/components/steps"),
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/scssVariable/variables" as *;`,
+      },
+    },
+  },
 });

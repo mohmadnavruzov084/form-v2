@@ -1,7 +1,10 @@
 import styles from "./button.module.scss";
-export const Button = ({ children, onClick }) => {
+export const Button = ({
+  children,
+  ...props
+}: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
-    <button onClick={onClick} className={styles.button}>
+    <button {...props} className={styles.button}>
       {children}
     </button>
   );
