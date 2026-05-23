@@ -1,7 +1,23 @@
 import { create } from "zustand";
 
-export const useUserDataStore = create((set) => ({
+interface UserData {
+  fullName?: string;
+  email?: string;
+  phoneNumber?: string;
+  company?: string;
+  address?: string;
+  subscriptionPlan?: string;
+  verificationMethod?: string;
+}
+
+interface UserStore {
+  user: UserData | null;
+  setUser: (data: UserData) => void;
+  clearUser: () => void;
+}
+
+export const useUserDataStore = create<UserStore>((set) => ({
   user: null,
   setUser: (data) => set({ user: data }),
-  ClearUser: () => set({ user: null }),
+  clearUser: () => set({ user: null }),
 }));

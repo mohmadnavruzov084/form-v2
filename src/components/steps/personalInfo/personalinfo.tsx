@@ -4,17 +4,27 @@ import { ControlledInput } from "@/module/controlledInput";
 import { SubmitHandler, useFormContext } from "react-hook-form";
 import { useUserDataStore } from "@/store/userStore";
 
+interface FormData {
+  fullName: string;
+  email: string;
+  phoneNumber: string;
+  company: string;
+  address: string;
+}
+
 export const Personalinfo = ({ onNext }: { onNext: () => void }) => {
-  const { handleSubmit } = useFormContext();
+  const { handleSubmit } = useFormContext<FormData>();
   const { setUser } = useUserDataStore();
-  const onSubmit: SubmitHandler<any> = (data) => {
+  const onSubmit: SubmitHandler<FormData> = (data) => {
     setUser(data);
     onNext();
   };
   return (
     <>
       <div className={styles.formRegistration}>
-        <div className={styles.formRegistration_title}>Personal information</div>
+        <div className={styles.formRegistration_title}>
+          Personal information
+        </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
           action="#"

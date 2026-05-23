@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button/button";
 import styles from "../personalInfo/personalinfo.module.scss";
 import style from "./subscriptionPlan.module.scss";
-import { useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
-import { plans } from "../../../arrays/plans";
+import { plans } from "../../../plans";
+
 export const SubscriptionPlan = ({
   onBack,
   onNext,
@@ -11,11 +11,10 @@ export const SubscriptionPlan = ({
   onBack: () => void;
   onNext: () => void;
 }) => {
-  const { control } = useFormContext();
-  const [selected, setSelected] = useState("");
-
+  const { control, watch } = useFormContext();
+  const selectedPlan = watch("subscriptionPlan");
   const handleNext = () => {
-    if (!selected) {
+    if (!selectedPlan) {
       alert("пожалуйста выберите план!");
       return;
     }
@@ -35,15 +34,14 @@ export const SubscriptionPlan = ({
               <div
                 key={plan.id}
                 onClick={() => {
-                  setSelected(plan.id);
                   field.onChange(plan.id);
                 }}
                 className={`${style.plans_item} ${
-                  selected === plan.id ? style.selected : ""
+                  field.value === plan.id ? style.selected : ""
                 }`}
               >
                 <div className={style.radio_button}>
-                  <input type="radio" checked={selected === plan.id} readOnly />
+                  <input type="radio" checked={field.value === plan.id} readOnly />
                 </div>
                 <div>
                   <div className={style.plans_title}>{plan.title}</div>

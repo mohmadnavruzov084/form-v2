@@ -2,7 +2,7 @@ import { Feedback } from "../feedback/feedback";
 import { Logosvg } from "../icons/logo";
 import styles from "./sidebar.module.scss";
 import clsx from "clsx";
-import { steps } from "@/arrays/steps";
+import { steps } from "@/steps";
 export const Sidebar = ({ currentStep, onStepClick }) => {
   return (
     <div className={styles.sidebar}>

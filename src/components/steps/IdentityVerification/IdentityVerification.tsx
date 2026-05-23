@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button/button";
 import styles from "./IdentityVerification.module.scss";
-import { useState } from "react";
+
 import { Controller, useFormContext } from "react-hook-form";
-import { verificationMethods } from "@/arrays/verificationMethods";
+import { verificationMethods } from "@/verificationMethods";
 export const IdentityVerification = ({
   onBack,
   onNext,
@@ -10,11 +10,10 @@ export const IdentityVerification = ({
   onBack: () => void;
   onNext: () => void;
 }) => {
-  const { control } = useFormContext();
-  const [selected, setSelected] = useState("");
-
+  const { control, watch } = useFormContext();
+  const selectedPlan = watch("verificationMethod");
   const handleNext = () => {
-    if (!selected) {
+    if (!selectedPlan) {
       alert("Пожалуйста, выберите способ верификации!!");
       return;
     }
@@ -34,17 +33,16 @@ export const IdentityVerification = ({
               <div
                 key={method.id}
                 onClick={() => {
-                  setSelected(method.id);
                   field.onChange(method.id);
                 }}
                 className={`${styles.plans_item} ${
-                  selected === method.id ? styles.selected : ""
+                  field.value === method.id ? styles.selected : ""
                 }`}
               >
                 <div className={styles.radio_button}>
                   <input
                     type="radio"
-                    checked={selected === method.id}
+                    checked={field.value === method.id}
                     readOnly
                   />
                 </div>
