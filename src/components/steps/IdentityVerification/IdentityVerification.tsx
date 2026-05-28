@@ -1,8 +1,29 @@
+import clsx from "clsx";
 import { Button } from "@/components/ui/button/button";
 import styles from "./IdentityVerification.module.scss";
 
 import { Controller, useFormContext } from "react-hook-form";
-import { verificationMethods } from "@/verificationMethods";
+export const verificationMethods = [
+  {
+    id: "Passport",
+    title: "Passport",
+    description: "Upload photo of your passport",
+    icon: "📜",
+  },
+  {
+    id: "DriversLicense",
+    title: "Driver's license",
+    description: "Upload front and back side",
+    icon: "🚗",
+  },
+  {
+    id: "IDCard",
+    title: "ID card",
+    description: "Government issued ID card",
+    icon: "📇",
+  },
+];
+
 export const IdentityVerification = ({
   onBack,
   onNext,
@@ -12,6 +33,7 @@ export const IdentityVerification = ({
 }) => {
   const { control, watch } = useFormContext();
   const selectedPlan = watch("verificationMethod");
+
   const handleNext = () => {
     if (!selectedPlan) {
       alert("Пожалуйста, выберите способ верификации!!");
@@ -35,9 +57,9 @@ export const IdentityVerification = ({
                 onClick={() => {
                   field.onChange(method.id);
                 }}
-                className={`${styles.plans_item} ${
-                  field.value === method.id ? styles.selected : ""
-                }`}
+                className={clsx(styles.plans_item, {
+                  [styles.selected]: field.value === method.id,
+                })}
               >
                 <div className={styles.radio_button}>
                   <input

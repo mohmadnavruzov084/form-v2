@@ -1,8 +1,28 @@
+import clsx from "clsx";
 import { Button } from "@/components/ui/button/button";
 import styles from "../personalInfo/personalinfo.module.scss";
 import style from "./subscriptionPlan.module.scss";
 import { Controller, useFormContext } from "react-hook-form";
-import { plans } from "../../../plans";
+const plans = [
+  {
+    id: "Basic",
+    title: "Basic Plan",
+    description: "Limited access to essential features",
+    price: "100$",
+  },
+  {
+    id: "Premium",
+    title: "Premium Plan",
+    description: "Complete access and priority support",
+    price: "300$",
+  },
+  {
+    id: "Enterprise",
+    title: "Enterprise Plan",
+    description: "Custom solutions for large teams",
+    price: "500$",
+  },
+];
 
 export const SubscriptionPlan = ({
   onBack,
@@ -13,6 +33,7 @@ export const SubscriptionPlan = ({
 }) => {
   const { control, watch } = useFormContext();
   const selectedPlan = watch("subscriptionPlan");
+
   const handleNext = () => {
     if (!selectedPlan) {
       alert("пожалуйста выберите план!");
@@ -36,12 +57,16 @@ export const SubscriptionPlan = ({
                 onClick={() => {
                   field.onChange(plan.id);
                 }}
-                className={`${style.plans_item} ${
-                  field.value === plan.id ? style.selected : ""
-                }`}
+                className={clsx(style.plans_item, {
+                  [style.selected]: field.value === plan.id,
+                })}
               >
                 <div className={style.radio_button}>
-                  <input type="radio" checked={field.value === plan.id} readOnly />
+                  <input
+                    type="radio"
+                    checked={field.value === plan.id}
+                    readOnly
+                  />
                 </div>
                 <div>
                   <div className={style.plans_title}>{plan.title}</div>
