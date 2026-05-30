@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { Button } from "@/components/ui/button/button";
 import styles from "./IdentityVerification.module.scss";
-
+import { useUserDataStore } from "@/store/userStore";
 import { Controller, useFormContext } from "react-hook-form";
 const verificationMethods = [
   {
@@ -33,12 +33,14 @@ export const IdentityVerification = ({
 }) => {
   const { control, watch } = useFormContext();
   const selectedPlan = watch("verificationMethod");
-
+  const { updateUser } = useUserDataStore();
   const handleNext = () => {
     if (!selectedPlan) {
       alert("Пожалуйста, выберите способ верификации!!");
       return;
     }
+   
+    updateUser({ verificationMethod: selectedPlan });
     onNext();
   };
 
@@ -56,6 +58,7 @@ export const IdentityVerification = ({
                 key={method.id}
                 onClick={() => {
                   field.onChange(method.id);
+                  updateUser({ verificationMethod: method.id });
                 }}
                 className={clsx(styles.plans_item, {
                   [styles.selected]: field.value === method.id,

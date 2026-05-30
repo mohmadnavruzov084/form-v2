@@ -16,6 +16,7 @@ export const Personalinfo = ({ onNext }: { onNext: () => void }) => {
   const { handleSubmit } = useFormContext<FormData>();
   const { setUser } = useUserDataStore();
   const onSubmit: SubmitHandler<FormData> = (data) => {
+   
     setUser(data);
     onNext();
   };
@@ -74,7 +75,7 @@ export const Personalinfo = ({ onNext }: { onNext: () => void }) => {
             </div>
           </div>
           <div className={styles.form_buttonWrapper}>
-            <Button onClick={onNext}> Continue</Button>
+            <Button type="submit">Continue</Button>
           </div>
         </form>
       </div>
