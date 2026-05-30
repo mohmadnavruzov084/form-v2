@@ -5,7 +5,7 @@ import { FormProvider } from "react-hook-form";
 import { useMultiForm } from "../hooks/useMultiForm";
 import { useState } from "react";
 import { SubscriptionPlan } from "../steps/subscriptionPlan/subscriptionPlan";
-import { IdentityVerification } from "../steps/IdentityVerification/IdentityVerification";
+import { IdentityVerification } from "../steps/identityVerification/identityVerification";
 import { AccountActive } from "../steps/accountActive/accountActive";
 
 export const MultiFormPage = () => {
