@@ -22,10 +22,10 @@ export const MultiFormPage = () => {
         return alert("Заполните все поля!");
       }
     }
-    return setStep(step + 1);
+    return setStep((prev) => prev + 1);
   };
 
-  const prevStep = () => setStep(step - 1);
+  const prevStep = () => setStep((prev) => prev - 1);
   const renderStep = () => {
     switch (step) {
       case 0:

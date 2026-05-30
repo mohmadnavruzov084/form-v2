@@ -30,7 +30,12 @@ const steps = [
   },
 ];
 
-export const Sidebar = ({ currentStep, onStepClick }) => {
+interface SidebarProps {
+  currentStep: number;
+  onStepClick: (stepId: number) => void;
+}
+
+export const Sidebar = ({ currentStep, onStepClick }: SidebarProps) => {
   return (
     <div className={styles.sidebar}>
       <div className={styles.logo}>

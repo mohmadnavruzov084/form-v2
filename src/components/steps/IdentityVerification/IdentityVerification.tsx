@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button/button";
 import styles from "./IdentityVerification.module.scss";
 
 import { Controller, useFormContext } from "react-hook-form";
-export const verificationMethods = [
+const verificationMethods = [
   {
     id: "Passport",
     title: "Passport",
