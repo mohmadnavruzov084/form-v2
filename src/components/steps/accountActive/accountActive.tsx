@@ -1,19 +1,19 @@
 import styles from "./accountActive.module.scss";
 import { useEffect, useRef } from "react";
-import { useUserDataStore } from "@/store/userStore";
+
+import { useFormContext } from "react-hook-form";
 export const AccountActive = () => {
-  const { user } = useUserDataStore();
+  const { getValues } = useFormContext();
   const hasLogged = useRef(false);
   useEffect(() => {
-    // Выводим данные только один раз при загрузке компонента
-    if (!hasLogged.current && user) {
+    if (!hasLogged.current) {
       hasLogged.current = true;
-
+      const allFormData = getValues();
       console.log("=== ФИНАЛЬНЫЕ ДАННЫЕ ФОРМЫ ===");
-      console.log(JSON.stringify(user, null, 2));
+      console.log(allFormData);
       console.log("==============================");
     }
-  }, [user]);
+  }, []);
   return (
     <>
       <div className={styles.account_wrapper}>

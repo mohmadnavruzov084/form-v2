@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { Button } from "@/components/ui/button/button";
 import styles from "./IdentityVerification.module.scss";
 import { useUserDataStore } from "@/store/userStore";
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller, useFormContext, useWatch } from "react-hook-form";
 const verificationMethods = [
   {
     id: "Passport",
@@ -31,15 +31,18 @@ export const IdentityVerification = ({
   onBack: () => void;
   onNext: () => void;
 }) => {
-  const { control, watch } = useFormContext();
-  const selectedPlan = watch("verificationMethod");
+  const { control } = useFormContext();
+  const selectedPlan = useWatch({
+    control,
+    name: "verificationMethod",
+  });
   const { updateUser } = useUserDataStore();
   const handleNext = () => {
     if (!selectedPlan) {
       alert("Пожалуйста, выберите способ верификации!!");
       return;
     }
-   
+
     updateUser({ verificationMethod: selectedPlan });
     onNext();
   };

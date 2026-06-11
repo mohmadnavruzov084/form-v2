@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { Button } from "@/components/ui/button/button";
 import styles from "../personalInfo/personalinfo.module.scss";
 import style from "./subscriptionPlan.module.scss";
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller, useFormContext, useWatch } from "react-hook-form";
 import { useUserDataStore } from "@/store/userStore";
 const plans = [
   {
@@ -32,9 +32,9 @@ export const SubscriptionPlan = ({
   onBack: () => void;
   onNext: () => void;
 }) => {
-  const { control, watch } = useFormContext();
+  const { control } = useFormContext();
   const { setUser, user } = useUserDataStore();
-  const selectedPlan = watch("subscriptionPlan");
+  const selectedPlan = useWatch({ control, name: "subscriptionPlan" });
 
   const handleNext = () => {
     if (!selectedPlan) {
