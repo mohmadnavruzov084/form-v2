@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button/button";
 import styles from "./IdentityVerification.module.scss";
 import { useUserDataStore } from "@/store/userStore";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
+import { logFormData } from "@/utils/logFormData";
+
 const verificationMethods = [
   {
     id: "Passport",
@@ -31,7 +33,7 @@ export const IdentityVerification = ({
   onBack: () => void;
   onNext: () => void;
 }) => {
-  const { control } = useFormContext();
+  const { control, ...form } = useFormContext();
   const selectedPlan = useWatch({
     control,
     name: "verificationMethod",
@@ -89,7 +91,13 @@ export const IdentityVerification = ({
 
       <div className={styles.button_box}>
         <Button onClick={onBack}>Back</Button>
-        <Button onClick={handleNext}>Next</Button>
+        <Button
+          onClick={() => {
+            (handleNext(), logFormData(form));
+          }}
+        >
+          Next
+        </Button>
       </div>
     </div>
   );
