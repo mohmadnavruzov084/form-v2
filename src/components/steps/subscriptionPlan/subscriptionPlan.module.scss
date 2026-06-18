@@ -1,0 +1,89 @@
+.plans {
+  &_wrapper {
+    border: 1px solid $colors-neutrals-neutral-300;
+    border-radius: 32px;
+    padding: 48px;
+    width: 500px;
+    height: 558px;
+    box-shadow: 0 1px 8px 0 rgba(25, 33, 61, 0.06);
+    background: $colors-neutrals-white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+  }
+  &_item {
+    border: 1px solid $colors-neutrals-neutral-400;
+    border-radius: 16px;
+    padding: 24px;
+    width: 270px;
+    height: 112px;
+    box-shadow: 0 5px 15px 0 rgba(74, 58, 255, 0.06);
+    background: $colors-neutrals-white;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 8px;
+    padding: 20px;
+  }
+  &_title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.15;
+    color: $colors-neutrals-neutral-800;
+    padding-bottom: 5px;
+  }
+  &_decription {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: $colors-neutrals-neutral-600;
+    padding-bottom: 5px;
+  }
+  &_price {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.15;
+    color: $colors-primary-hue-purple-700;
+  }
+}
+.button {
+  &_box {
+    display: flex;
+    gap: 10px;
+    :first-child {
+      box-shadow:
+        inset 0 4px 6px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -2px 2px 0 rgba(27, 35, 85, 0.07),
+        0 3px 6px 0 rgba(7, 0, 110, 0.03);
+      background: linear-gradient(180deg, #fff 0%, #fbfbfe 100%);
+      color: $colors-neutrals-neutral-800;
+      :hover {
+        border: 1.5px solid $colors-primary-hue-purple-700;
+      }
+    }
+  }
+  .back {
+    color: $colors-neutrals-neutral-800;
+    box-shadow:
+      inset 0 4px 6px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -2px 2px 0 rgba(27, 35, 85, 0.07),
+      0 3px 6px 0 rgba(7, 0, 110, 0.03);
+    background: linear-gradient(180deg, #fff 0%, #fbfbfe 100%);
+  }
+}
+.radio_button {
+  margin-bottom: 5px;
+}
+
+.selected {
+  border: 1px solid $colors-primary-hue-purple-700;
+}
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+  padding: 8px;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-radius: 4px;
+}

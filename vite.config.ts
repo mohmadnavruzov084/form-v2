@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "path"; 
+import path from "path";
 
 export default defineConfig({
   plugins: [react()],
@@ -10,11 +10,14 @@ export default defineConfig({
       "@ui": path.resolve(__dirname, "./src/ui"),
       "@modules": path.resolve(__dirname, "./src/modules"),
       "@components": path.resolve(__dirname, "./src/components"),
-      "@steps": path.resolve(
-        __dirname,
-        "./src/components/Registration-form/steps",
-      ),
+      "@steps": path.resolve(__dirname, "./src/components/steps"),
     },
   },
-  
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/scssVariable/variables" as *;`,
+      },
+    },
+  },
 });

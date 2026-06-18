@@ -1,13 +1,13 @@
-import { Feedbackicon } from "../icons/feedback-icon";
-import styles from "./Feedback.module.scss";
+import { Feedbackicon } from "../icons/feedbackIcon";
+import styles from "./feedback.module.scss";
 export const Feedback = () => {
   return (
     <>
       <div className={styles.feedback}>
         <div className={styles.feedback_container}>
-          <div className={styles.feedback_text}>
-            <h3>Need a help?</h3>
-            <p>chat with live support</p>
+          <div>
+            <div className={styles.feedback_title}>Need a help?</div>
+            <div className={styles.feedback_descripton}>chat with live support</div>
           </div>
           <div className={styles.feedback_icon}>
             <a href="/">
