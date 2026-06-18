@@ -93,7 +93,8 @@ export const IdentityVerification = ({
         <Button onClick={onBack}>Back</Button>
         <Button
           onClick={() => {
-            (handleNext(), logFormData(form));
+            handleNext();
+            logFormData(form);
           }}
         >
           Next
