@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button/button";
 import styles from "./personalinfo.module.scss";
 import { ControlledInput } from "@/module/controlledInput";
 import { SubmitHandler, useFormContext } from "react-hook-form";
-import { useUserDataStore } from "@/store/userStore";
 
 interface FormData {
   fullName: string;
@@ -14,10 +13,8 @@ interface FormData {
 
 export const Personalinfo = ({ onNext }: { onNext: () => void }) => {
   const { handleSubmit } = useFormContext<FormData>();
-  const { setUser } = useUserDataStore();
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-   
-    setUser(data);
+
+  const onSubmit: SubmitHandler<FormData> = () => {
     onNext();
   };
   return (

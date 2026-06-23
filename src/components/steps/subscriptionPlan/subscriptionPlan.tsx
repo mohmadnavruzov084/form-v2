@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button/button";
 import styles from "../personalInfo/personalinfo.module.scss";
 import style from "./subscriptionPlan.module.scss";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
-import { useUserDataStore } from "@/store/userStore";
+
 const plans = [
   {
     id: "Basic",
@@ -33,7 +33,7 @@ export const SubscriptionPlan = ({
   onNext: () => void;
 }) => {
   const { control } = useFormContext();
-  const { setUser, user } = useUserDataStore();
+
   const selectedPlan = useWatch({ control, name: "subscriptionPlan" });
 
   const handleNext = () => {
@@ -41,7 +41,7 @@ export const SubscriptionPlan = ({
       alert("пожалуйста выберите план!");
       return;
     }
-    setUser({ ...user, subscriptionPlan: selectedPlan });
+
     onNext();
   };
 
