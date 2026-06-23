@@ -30,7 +30,8 @@
       "@modules/*": ["./src/modules/*"],
       "@components/*": ["./src/components/*"],
       "@steps/*": ["./src/components/steps/*"]
-    }
+    },
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src", "vite-env.d.ts"]
 }

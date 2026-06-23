@@ -33,9 +33,14 @@ const steps = [
 interface SidebarProps {
   currentStep: number;
   onStepClick: (stepId: number) => void;
+  stepStatus?: Record<number, "valid" | "invalid" | "untouched">;
 }
 
-export const Sidebar = ({ currentStep, onStepClick }: SidebarProps) => {
+export const Sidebar = ({
+  currentStep,
+  onStepClick,
+  stepStatus = {},
+}: SidebarProps) => {
   return (
     <div className={styles.sidebar}>
       <div className={styles.logo}>
@@ -44,37 +49,63 @@ export const Sidebar = ({ currentStep, onStepClick }: SidebarProps) => {
       </div>
 
       <div className={styles.steps}>
-        {steps.map((step, index) => (
-          <div key={step.id}>
-            <div className={styles.steps_item}>
-              <div
-                className={clsx(styles.steps_number, {
-                  [styles.steps_number_active]: currentStep === step.id,
-                })}
-                onClick={() => onStepClick(step.id)}
-              >
-                {step.number}
-              </div>
-              <div className={styles.steps_text}>
-                <div className={styles.steps_title}>{step.title}</div>
-                <div className={styles.steps_description}>
-                  {step.description}
+        {steps.map((step, index) => {
+          const status = stepStatus[step.id] || "untouched";
+          const isActive = currentStep === step.id;
+          const isCompleted = status === "valid" && !isActive;
+          const isDisabled = step.id > currentStep + 1;
+
+          return (
+            <div key={step.id}>
+              <div className={styles.steps_item}>
+                <div
+                  className={clsx(styles.steps_number, {
+                    [styles.steps_number_active]: isActive,
+                    [styles.steps_number_completed]: isCompleted,
+                    [styles.steps_number_error]:
+                      status === "invalid" && isActive,
+                    [styles.steps_number_disabled]: isDisabled,
+                  })}
+                  onClick={() => {
+                    if (!isDisabled) {
+                      onStepClick(step.id);
+                    }
+                  }}
+                  style={{
+                    cursor: isDisabled ? "not-allowed" : "pointer",
+                    opacity: isDisabled ? 0.5 : 1,
+                  }}
+                >
+                  {isCompleted ? "✓" : step.number}
+                </div>
+
+                <div className={styles.steps_text}>
+                  <div className={styles.steps_title}>{step.title}</div>
+                  <div className={styles.steps_description}>
+                    {step.description}
+                  </div>
+
+                  {isCompleted && (
+                    <span className={styles.status_valid}> Заполнено</span>
+                  )}
+                  {status === "invalid" && isActive && (
+                    <span className={styles.status_error}></span>
+                  )}
                 </div>
               </div>
-            </div>
 
-            {/* Линия между шагами (кроме последнего) */}
-            {index < steps.length - 1 && (
-              <div
-                className={clsx(styles.line, {
-                  [styles.line_100]: currentStep >= step.number,
-                  [styles.line_0]: currentStep < step.number,
-                  [styles.line_50]: currentStep === step.id && step.id !== 0,
-                })}
-              />
-            )}
-          </div>
-        ))}
+              {index < steps.length - 1 && (
+                <div
+                  className={clsx(styles.line, {
+                    [styles.line_100]: isCompleted || step.id < currentStep,
+                    [styles.line_0]: step.id >= currentStep && !isCompleted,
+                    [styles.line_50]: isActive,
+                  })}
+                />
+              )}
+            </div>
+          );
+        })}
       </div>
 
       <Feedback />

@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import { Button } from "@/components/ui/button/button";
 import styles from "./IdentityVerification.module.scss";
-import { Controller, useFormContext, useWatch } from "react-hook-form";
-import { logFormData } from "@/utils/logFormData";
+import { Controller, useFormContext } from "react-hook-form";
+import { FormData } from "../../hooks/useMultiForm";
+import { logFormData } from "../../../utils/logFormData";
 
 const verificationMethods = [
   {
@@ -32,18 +33,20 @@ export const IdentityVerification = ({
   onBack: () => void;
   onNext: () => void;
 }) => {
-  const { control, ...form } = useFormContext();
-  const selectedPlan = useWatch({
+  const form = useFormContext<FormData>();
+  const {
     control,
-    name: "verificationMethod",
-  });
+    formState: { errors },
+    trigger,
+  } = form;
 
-  const handleNext = () => {
-    if (!selectedPlan) {
-      alert("Пожалуйста, выберите способ верификации!!");
+  const handleNext = async () => {
+    const isValid = await trigger("verificationMethod");
+    if (!isValid) {
       return;
     }
 
+    logFormData(form);
     onNext();
   };
 
@@ -61,6 +64,7 @@ export const IdentityVerification = ({
                 key={method.id}
                 onClick={() => {
                   field.onChange(method.id);
+                  field.onBlur();
                 }}
                 className={clsx(styles.plans_item, {
                   [styles.selected]: field.value === method.id,
@@ -82,20 +86,19 @@ export const IdentityVerification = ({
                 </div>
               </div>
             ))}
+
+            {errors.verificationMethod && (
+              <div className={styles.error}>
+                {errors.verificationMethod.message}
+              </div>
+            )}
           </>
         )}
       />
 
       <div className={styles.button_box}>
         <Button onClick={onBack}>Back</Button>
-        <Button
-          onClick={() => {
-            handleNext();
-            logFormData(form);
-          }}
-        >
-          Next
-        </Button>
+        <Button onClick={handleNext}>Next</Button>
       </div>
     </div>
   );
