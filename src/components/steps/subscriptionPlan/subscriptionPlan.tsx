@@ -2,8 +2,9 @@ import clsx from "clsx";
 import { Button } from "@/components/ui/button/button";
 import styles from "../personalInfo/personalinfo.module.scss";
 import style from "./subscriptionPlan.module.scss";
-import { Controller, useFormContext, useWatch } from "react-hook-form";
-import { useUserDataStore } from "@/store/userStore";
+import { Controller, useFormContext } from "react-hook-form";
+import { FormData } from "../../hooks/useMultiForm";
+
 const plans = [
   {
     id: "Basic",
@@ -32,16 +33,17 @@ export const SubscriptionPlan = ({
   onBack: () => void;
   onNext: () => void;
 }) => {
-  const { control } = useFormContext();
-  const { setUser, user } = useUserDataStore();
-  const selectedPlan = useWatch({ control, name: "subscriptionPlan" });
+  const {
+    control,
+    formState: { errors },
+    trigger,
+  } = useFormContext<FormData>();
 
-  const handleNext = () => {
-    if (!selectedPlan) {
-      alert("пожалуйста выберите план!");
+  const handleNext = async () => {
+    const isValid = await trigger("subscriptionPlan");
+    if (!isValid) {
       return;
     }
-    setUser({ ...user, subscriptionPlan: selectedPlan });
     onNext();
   };
 
@@ -59,6 +61,7 @@ export const SubscriptionPlan = ({
                 key={plan.id}
                 onClick={() => {
                   field.onChange(plan.id);
+                  field.onBlur();
                 }}
                 className={clsx(style.plans_item, {
                   [style.selected]: field.value === plan.id,
@@ -80,6 +83,12 @@ export const SubscriptionPlan = ({
                 </div>
               </div>
             ))}
+
+            {errors.subscriptionPlan && (
+              <div className={styles.error}>
+                {errors.subscriptionPlan.message}
+              </div>
+            )}
           </>
         )}
       />

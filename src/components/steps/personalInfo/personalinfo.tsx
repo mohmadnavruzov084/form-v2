@@ -2,35 +2,37 @@ import { Button } from "@/components/ui/button/button";
 import styles from "./personalinfo.module.scss";
 import { ControlledInput } from "@/module/controlledInput";
 import { SubmitHandler, useFormContext } from "react-hook-form";
-import { useUserDataStore } from "@/store/userStore";
-
-interface FormData {
-  fullName: string;
-  email: string;
-  phoneNumber: string;
-  company: string;
-  address: string;
-}
+import { FormData } from "../../hooks/useMultiForm";
 
 export const Personalinfo = ({ onNext }: { onNext: () => void }) => {
-  const { handleSubmit } = useFormContext<FormData>();
-  const { setUser } = useUserDataStore();
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-   
-    setUser(data);
+  const { handleSubmit, trigger } = useFormContext<FormData>();
+
+  const onSubmit: SubmitHandler<FormData> = () => {
     onNext();
   };
+
+  const handleContinue = async () => {
+    const fields = [
+      "fullName",
+      "email",
+      "phoneNumber",
+      "company",
+      "address",
+    ] as const;
+    const isStepValid = await trigger(fields);
+
+    if (isStepValid) {
+      onNext();
+    }
+  };
+
   return (
     <>
       <div className={styles.formRegistration}>
         <div className={styles.formRegistration_title}>
           Personal information
         </div>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          action="#"
-          className={styles.form}
-        >
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <div className={styles.form_item}>
             <div className={styles.form_box}>
               <label htmlFor="">
@@ -56,17 +58,13 @@ export const Personalinfo = ({ onNext }: { onNext: () => void }) => {
               />
             </div>
             <div className={styles.form_box}>
-              <label htmlFor="">
-                Company<span className={styles.redStar}>*</span>
-              </label>
+              <label htmlFor="">Company</label>
               <ControlledInput name="company" placeholder="Exp. Companay" />
             </div>
           </div>
           <div className={styles.form_item}>
             <div className={styles.form_box}>
-              <label htmlFor="">
-                Address <span className={styles.redStar}>*</span>
-              </label>
+              <label htmlFor="">Address</label>
               <ControlledInput
                 name="address"
                 placeholder="Exp. San Francisco, CA"
@@ -75,7 +73,9 @@ export const Personalinfo = ({ onNext }: { onNext: () => void }) => {
             </div>
           </div>
           <div className={styles.form_buttonWrapper}>
-            <Button type="submit">Continue</Button>
+            <Button type="button" onClick={handleContinue}>
+              Continue
+            </Button>
           </div>
         </form>
       </div>

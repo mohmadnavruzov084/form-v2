@@ -39,30 +39,34 @@ const schema = z.object({
     .or(z.literal("")),
 
   subscriptionPlan: z
-    .enum(["Basic", "Premium", "Enterprise"], {
+    .string()
+    .min(1, "Выберите тарифный план!")
+    .refine((val) => ["Basic", "Premium", "Enterprise"].includes(val), {
       message: "Выберите тарифный план!",
-    })
-    .nullable(),
+    }),
 
   verificationMethod: z
-    .enum(["Passport", "DriversLicense", "IDCard"], {
-      message: "Выберите способ верификации",
-    })
-    .nullable(),
+    .string()
+    .min(1, "Выберите способ верификации!")
+    .refine((val) => ["Passport", "DriversLicense", "IDCard"].includes(val), {
+      message: "Выберите способ верификации!",
+    }),
 });
 
-const defaultValues = {
+export type FormData = z.infer<typeof schema>;
+
+const defaultValues: FormData = {
   fullName: "",
   email: "",
   phoneNumber: "",
   company: "",
   address: "",
-  subscriptionPlan: null,
-  verificationMethod: null,
+  subscriptionPlan: "",
+  verificationMethod: "",
 };
 
 export const useMultiForm = () => {
-  const form = useForm({
+  const form = useForm<FormData>({
     mode: "onChange",
     resolver: zodResolver(schema),
     defaultValues,
